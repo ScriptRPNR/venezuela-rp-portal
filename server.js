@@ -7,7 +7,7 @@ const PORT = Number(process.env.PORT || 3000);
 const CLIENT_ID = "1547402928971710494";
 const CLIENT_SECRET = process.env.DISCORD_CLIENT_SECRET;
 const REDIRECT_URI = process.env.DISCORD_REDIRECT_URI || `http://localhost:${PORT}/auth/discord/callback`;
-const HTML_FILE = path.join(__dirname, "VenezuelaRP-portal.html");
+const HTML_FILE = path.join(__dirname, "index.html");
 
 if (!CLIENT_SECRET) {
   console.error("Falta DISCORD_CLIENT_SECRET. Configúralo antes de iniciar el servidor.");
