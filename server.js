@@ -22,6 +22,18 @@ function send(res, status, contentType, body) {
 const server = http.createServer(async (req, res) => {
   const requestUrl = new URL(req.url, `http://localhost:${PORT}`);
 
+  if (requestUrl.pathname === "/auth/discord/start") {
+    const authorizationUrl = new URL("https://discord.com/oauth2/authorize");
+    authorizationUrl.search = new URLSearchParams({
+      client_id: CLIENT_ID,
+      response_type: "code",
+      redirect_uri: REDIRECT_URI,
+      scope: "identify email"
+    }).toString();
+    res.writeHead(302, { Location: authorizationUrl.toString() });
+    return res.end();
+  }
+
   if (requestUrl.pathname === "/auth/discord/callback") {
     const code = requestUrl.searchParams.get("code");
     if (!code) return send(res, 400, "text/plain; charset=utf-8", "Falta el codigo de Discord.");
