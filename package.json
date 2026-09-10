@@ -1,0 +1,12 @@
+{
+  "name": "venezuela-rp-portal",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Portal oficial de Venezuela RP con OAuth2 de Discord",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
